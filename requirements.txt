@@ -1,0 +1,5 @@
+pandas
+rpi.gpio
+PyMLX90614
+RPi.bme280
+paho-mqtt
