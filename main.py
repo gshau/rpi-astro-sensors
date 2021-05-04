@@ -31,8 +31,6 @@ MLX_ADDRESS = 0x5A
 mqtt_broker_address = "10.0.5.50"
 
 sqm = SQM()
-# sqm.found_device = False
-# sqm.ip_address = None
 
 bus = SMBus(1)
 sensor = MLX90614(bus, MLX_ADDRESS)
