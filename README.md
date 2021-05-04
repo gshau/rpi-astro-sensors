@@ -22,4 +22,9 @@ Edit the `main.py` file to point to your MQTT broker.  Run the application with
 pi@astro-sensors:~/rpi-astro-sensors $ python3 main.py
 ```
 
+### Example Usage
+#### Install / Run
 ![](screenshots/install_run.png)
+
+#### API Response
+![](screenshots/api_response.png)
