@@ -1,7 +1,7 @@
 # rpi-astro-sensors
 
 The goal of this project is to serve sensor data using a raspberry pi that include sensors:
-- BME280 - including data for Humidity, Temperature, Barometric Pressus
+- [BME280](https://www.adafruit.com/product/2652) - including data for Humidity, Temperature, Barometric Pressus
 - [IMX90614](https://www.sparkfun.com/products/9570) - non-contact infrared thermometer, used to determine the temperature of the sky to detect the presence of clouds.  As the sky becomes more clear, the sky temperature is much colder.  Comparing the IR temperature with the ambient temperature gives an indication of cloud cover.
 - [SQM-LE](http://unihedron.com/projects/sqm-le/), or a [Home-built SQM-LE](https://github.com/gshau/SQM_TSL2591) - used to measure the sky brightness in units of magnitudes per square arcseconds.
 
