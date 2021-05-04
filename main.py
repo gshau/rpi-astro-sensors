@@ -19,7 +19,7 @@ from flask import Flask, jsonify, request, url_for
 from sqm_le import SQM
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(module)s %(message)s")
-log = logging.getLogger(__name__)
+log = logging.getLogger(__file__)
 
 
 app = Flask(__name__)
@@ -90,5 +90,5 @@ def get_mqtt_broker():
 if __name__ == "__main__":
     p = Process(target=push_data)
     p.start()
-    app.run(debug=True, use_reloader=True, host="0.0.0.0", port=9999)
+    app.run(debug=True, use_reloader=True, host="0.0.0.0", port=5000)
     p.join()

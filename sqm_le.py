@@ -3,7 +3,7 @@ import socket
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(module)s %(message)s")
-log = logging.getLogger(__name__)
+log = logging.getLogger(__file__)
 
 
 class SQM:
@@ -49,7 +49,7 @@ class SQM:
             log.warning("ERR. Device not found!")
             raise
         else:
-            low.info(f"Found device at: {addr[0]}")
+            log.info(f"Found device at: {addr[0]}")
             if set_ip:
                 self.ip_address = addr[0]
             self.found_device = True
