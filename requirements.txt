@@ -1,6 +1,6 @@
-flask
-numpy
-pandas
-PyMLX90614
-RPi.bme280
-paho-mqtt
+flask==1.1.2
+numpy==1.20.2
+pandas==1.2.4
+PyMLX90614==0.0.3
+RPi.bme280==0.2.3
+paho-mqtt==1.5.1
