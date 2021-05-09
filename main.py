@@ -54,12 +54,13 @@ def get_data():
 
 
 def push_data():
-    client = mqtt.Client("astro_sensor", clean_session=False)
-    client.connect(mqtt_broker_address)
     while True:
+        client = mqtt.Client("astro_sensor", clean_session=False)
+        client.connect(mqtt_broker_address)
         log.info("Pushing data")
         data = get_data()
         client.publish("sensors/astro_sensor", json.dumps(data))
+        client.disconnect()
         time.sleep(15)
 
 

@@ -9,17 +9,25 @@ These data can be pushed to a mosquitto MQTT broker, or served via a rest api.
 
 ## Installation
 
-On a clean raspberry pi lite install, these steps are needed:
+On a clean raspberry pi lite install, run the setup script.  It installs python, and python libraries, registers the service and enables it on reboots
 ```
 pi@astro-sensors:~/rpi-astro-sensors $ ./setup.sh
-pi@astro-sensors:~/rpi-astro-sensors $ pip3 install -r requirements.txt
 ```
 
 ## Usage
 
-Edit the `main.py` file to point to your MQTT broker.  Run the application with 
+Edit the `main.py` file to point to your MQTT broker.  
+Run the service with 
 ```
-pi@astro-sensors:~/rpi-astro-sensors $ python3 main.py
+pi@astro-sensors:~/rpi-astro-sensors $ systemctl start astro-sensor.service
+```
+Stop the service with 
+```
+pi@astro-sensors:~/rpi-astro-sensors $ systemctl stop astro-sensor.service
+```
+Restart the service with 
+```
+pi@astro-sensors:~/rpi-astro-sensors $ systemctl restart astro-sensor.service
 ```
 
 ### Example Usage
