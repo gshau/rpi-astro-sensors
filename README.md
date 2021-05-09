@@ -1,4 +1,4 @@
-# rpi-astro-sensors
+# Raspberry Pi Sensors for Astronomy
 
 The goal of this project is to serve sensor data using a raspberry pi that include sensors:
 - [BME280](https://www.adafruit.com/product/2652) - including data for Humidity, Temperature, Barometric Pressus
