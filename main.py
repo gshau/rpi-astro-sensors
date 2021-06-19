@@ -21,16 +21,14 @@ from sqm_le import SQM
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(module)s %(message)s")
 log = logging.getLogger(__file__)
 
-
 app = Flask(__name__)
-
 
 BME_ADDRESS = 0x76
 MLX_ADDRESS = 0x5A
 
 mqtt_broker_address = "10.0.5.50"
-
-sqm = SQM()
+sqm_address = "10.0.5.98"
+sqm = SQM(ip_address=sqm_address)
 
 bus = SMBus(1)
 sensor = MLX90614(bus, MLX_ADDRESS)
@@ -48,8 +46,11 @@ def get_data():
     data["ir_temp"] = sensor.get_object_1()
     data["temp_diff"] = data["ambient_temp"] - data["ir_temp"]
     if sqm.found_device:
-        sqm_reading = sqm.get_reading()
-        data["sqm"] = sqm_reading
+        try:
+            sqm_reading = sqm.get_reading()
+            data["sqm"] = sqm_reading
+        except:
+            data["sqm"] = np.nan
     return data
 
 

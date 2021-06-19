@@ -13,6 +13,9 @@ class SQM:
             self.find_device()
         else:
             self.ip_address = ip_address
+            result = self.get_reading()
+            if type(result) == float:
+                self.found_device = True
 
     def send_request(self, code="rx"):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -32,6 +35,7 @@ class SQM:
         if hasattr(socket, "SO_BROADCAST"):
             s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         s.sendto(message, ("255.255.255.255", 30718))
+        buf = ""
         starttime = time.time()
         addr = [None, None]
         while True:
@@ -40,7 +44,8 @@ class SQM:
                 if buf[3].encode("hex") == "f7":
                     log.info(f"Received from {addr}: MAC: buf[24:30].encode('hex')")
             except:
-                if time.time() - starttime > 3:  # timeout
+                # Timeout in seconds. Allow all devices time to respond
+                if time.time() - starttime > 3:
                     break
                 pass
         try:
