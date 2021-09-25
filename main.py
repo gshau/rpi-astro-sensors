@@ -1,24 +1,22 @@
 import time
 import logging
-import os
 
-import pandas as pd
 import json
-import time
 import numpy as np
 
 import paho.mqtt.client as mqtt
-from random import randrange
 
 from multiprocessing import Process
 
 import bme280
 from smbus2 import SMBus
 from mlx90614 import MLX90614
-from flask import Flask, jsonify, request, url_for
+from flask import Flask, jsonify
 from sqm_le import SQM
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(module)s %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s %(module)s %(message)s"
+)  # noqa
 log = logging.getLogger(__file__)
 
 app = Flask(__name__)
@@ -49,14 +47,14 @@ def get_data():
         try:
             sqm_reading = sqm.get_reading()
             data["sqm"] = sqm_reading
-        except:
+        except Exception:
             data["sqm"] = np.nan
     return data
 
 
 def push_data():
     while True:
-        client = mqtt.Client("astro_sensor", clean_session=False)
+        client = mqtt.Client("astro_sensor", clean_session=True)
         client.connect(mqtt_broker_address)
         log.info("Pushing data")
         data = get_data()
